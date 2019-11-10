@@ -8,10 +8,10 @@
 list = []
 
 
-def checker(op, str):
+def checker(op, in_str):
     while True:
         try:
-            result = op(input(str))
+            result = op(input(in_str))
             break
         except ValueError:
             print('Введено некорректное значение')
@@ -28,13 +28,19 @@ def analiz(my_list):
         print('{}: {}'.format(key, el))
 
 
+def not_params(param, in_str):
+    while not param:
+        param = input(in_str).strip()
+    return param
+
+
 def dict_add():
     name = ''
-    while not name:
-        name = (input('Введите название товара ')).strip()
+    units = ''
+    name = not_params(name, 'Введите название товара ')
     price = checker(float, 'Введите цену товара ')
     counts = checker(int, 'Введите количество товара ')
-    units = input('Введите единицу измерения товара ')
+    units = not_params(units, 'Введите единицу измерения товара ')
     result = {'Название': name, 'Цена': price, 'Количество': counts, 'Ед.': units}
     return result
 
