@@ -5,10 +5,20 @@
 list = []
 
 
+def checker(op, str):
+    while True:
+        try:
+            result = op(input(str))
+            break
+        except ValueError:
+            continue
+    return result
+
+
 def dict_add():
     name = input('Введите название товара ')
-    price = float(input('Введите цену товара '))
-    counts = int(input('Введите количество товара '))
+    price = checker(float, 'Введите цену товара ')
+    counts = checker(int, 'Введите количество товара ')
     units = input('Введите единицу измерения товара ')
     result = {'Название': name, 'Цена': price, 'Количество': counts, 'Ед.': units}
     return result
